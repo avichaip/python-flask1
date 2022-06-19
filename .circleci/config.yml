@@ -14,6 +14,7 @@ jobs:
       - run:
           name: Run unit tests
           command: |
+
   build2:
     docker:
       - image: circleci/python:3.8.4
@@ -28,17 +29,14 @@ jobs:
           name: Run unit tests
           command: |    
 workflows:
+  version: 2
   build_test:
     jobs:
-      - run_tests
+      - build
+      - build2
 
-workflows:
-  version: 2
-  
-  my_workflow:
-  jobs:
-    -build
-    -build2:
-       requires:
-         -build
+
+
+
+    
 
